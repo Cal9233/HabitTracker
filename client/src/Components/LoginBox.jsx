@@ -5,12 +5,14 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { FormLabel, TextField } from '@mui/material';
-
 const LoginBox = () => {
-    const [textValue, setTextValue] = useState("");
-    const onTextChange = (e) => setTextValue(e);
+    const [textValue, setTextValue] = useState();
+    const onTextChange = (e) => setTextValue(e.target.value);
     const handleSubmit = () => console.log(textValue);
     const handleReset = () => setTextValue("");
+
+   
+
 
     const submitButton = (e) => {
         //axios
@@ -20,20 +22,40 @@ const LoginBox = () => {
     }
 
   return (
-    <div>
+    <div style={{
+        border: '2px black solid',
+        padding: '50px',
+        borderRadius: '20%'
+        }}>
         <Container maxWidth="lg">
-            <FormControl>
-                <FormLabel>Enter your Email</FormLabel>
-                <br />
-                <TextField
-                    onChange={onTextChange}
-                    value={textValue}
-
-                />
-                <br />
-                <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-            </FormControl>
-            
+            <div>
+                <FormControl>
+                    <FormLabel sx={{color: "black", textAlign: 'center', fontSize: '40px'}}>Login</FormLabel>
+                        <br />
+                        <TextField
+                            onChange={onTextChange}
+                            value={textValue}
+                            label="Email"
+                        />
+                        <br/>
+                        <TextField
+                            onChange={onTextChange}
+                            value={textValue}
+                            label="Password"
+                        />
+                        <br />
+                        <Button 
+                            variant="contained" 
+                            onClick={handleSubmit}
+                            sx={{
+                                color: 'black',
+                                backgroundColor: 'white',
+                                borderColor: 'black'
+                            }}>
+                            Submit
+                        </Button>
+                </FormControl>
+            </div>
         </Container>
     </div>
   )
