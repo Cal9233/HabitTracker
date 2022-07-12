@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import image from '../Images/background.jpg';
 import LoginBox from './LoginBox';
-import ProgressChart from './ProgressChart';
+
 
 const LandingPage = () => {
+
+  const [token, setToken] = useState();
+
+  // if(!token){
+  //   return <LoginBox setToken={setToken} />;
+  // }
+
   return (
     <div style={{
       backgroundImage: `url(${image})`,
@@ -20,7 +27,6 @@ const LandingPage = () => {
           <div style={{top: '100px', position: 'relative'}}>
             <LoginBox />
           </div>
-          //<ProgressChart />
         </div>
     </div>
   )

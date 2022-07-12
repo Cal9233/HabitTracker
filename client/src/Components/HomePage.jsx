@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import ProgressChart from './ProgressChart';
 
 
 //We want chart that shows progress
@@ -8,7 +9,9 @@ import React from 'react'
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <ProgressChart />
+    </div>
   )
 }
 

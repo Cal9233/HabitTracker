@@ -5,6 +5,7 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { FormLabel, TextField } from '@mui/material';
+import {Link} from 'react-router-dom';
 const LoginBox = () => {
     const [textValue, setTextValue] = useState();
     const onTextChange = (e) => setTextValue(e.target.value);
@@ -12,7 +13,6 @@ const LoginBox = () => {
     const handleReset = () => setTextValue("");
 
    
-
 
     const submitButton = (e) => {
         //axios
@@ -54,6 +54,15 @@ const LoginBox = () => {
                             }}>
                             Submit
                         </Button>
+                        <br />
+                        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', textAlign: 'center'}}>
+                            <div>------------------</div>
+                            <h3><strong>OR</strong></h3>
+                            <div>------------------</div>
+                        </div>
+                        <div style={{textAlign: "center"}}>
+                            <Link to="/SignUp">Sign Up</Link>
+                        </div>
                 </FormControl>
             </div>
         </Container>
