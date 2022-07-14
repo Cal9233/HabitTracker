@@ -5,6 +5,12 @@ const HabitSchema = new Schema(
     {
         action: {
             type: String
+        },
+        start: {
+            type: String
+        },
+        deadline: {
+            type: String
         }
     }
 );

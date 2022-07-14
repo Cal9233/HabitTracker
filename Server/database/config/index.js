@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://Cal:Rathalos15@habittracker.g4jqs5b.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Cal:Rathalos15@HabitTracker.g4jqs5b.mongodb.net/HabitTracker?retryWrites=true&w=majority";
     
 
 try {

@@ -1,16 +1,22 @@
 const express = require('express');
-const router =  express.Router();
+//const router =  express.Router();
+const router = require('express').Router();
 const Habits = require('../database/models/habits');
 
 router.get('/habits', (req, res, next) => {
+    console.log('get habit: ');
     Habits.find({}, 'action')
     .then(data => res.json(data))
     .catch(next);
 })
 
-router.post('/habits', (req, res, next) => {
-    if(req.body.action){
-        Habits.create(req.body)
+router.post('/habits', async (req, res, next) => {
+    if(req.body){
+        await Habits.create({
+            action: req.body.action,
+            start: req.body.start,
+            deadline: req.body.deadline
+        })
         .then(data => res.json(data))
         .catch(next);
     } else {
