@@ -1,24 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Container from '@mui/material/Container';
 import FormControl, { useFormControl } from '@mui/material/FormControl';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
+import { AppContext } from '../Context/AppContext';
 import { FormLabel, TextField } from '@mui/material';
 import {Link} from 'react-router-dom';
-const LoginBox = () => {
-    const [textValue, setTextValue] = useState();
-    const onTextChange = (e) => setTextValue(e.target.value);
-    const handleSubmit = () => console.log(textValue);
-    const handleReset = () => setTextValue("");
+
+const LoginBox = ({history}) => {
+    const user = {
+        name: "",
+        email: "",
+        password: ""
+    }
+
+    const [userData, setUserData] = useState(user);
+    const { setCurrentUser } = useContext(AppContext);
+    const api = 'http://localhost:1337';
+
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        e.preventDefault();
+        setUserData({
+            ...userData,
+            [name]: value
+        })
+    }
 
    
 
-    const submitButton = (e) => {
-        //axios
-        axios.post('http://localhost:1337/email', {
-            email: 'calvin@gmail.com'
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        axios
+        .post(api + '/user/login', userData)
+        .then((data) => {
+            localStorage.setItem('user', data);
+            setCurrentUser(data);
+            if(data){
+                history.push('/Home');
+            }
         })
+        .catch(e => console.log(e));
     }
 
   return (
@@ -33,20 +56,24 @@ const LoginBox = () => {
                     <FormLabel sx={{color: "black", textAlign: 'center', fontSize: '40px'}}>Login</FormLabel>
                         <br />
                         <TextField
-                            onChange={onTextChange}
-                            value={textValue}
+                            name="email"
+                            onChange={handleInputChange}
+                            value={userData.email}
                             label="Email"
+                            type="email"
                         />
                         <br/>
                         <TextField
-                            onChange={onTextChange}
-                            value={textValue}
+                            name="password"
+                            onChange={handleInputChange}
+                            value={userData.password}
                             label="Password"
                         />
                         <br />
                         <Button 
                             variant="contained" 
-                            onClick={handleSubmit}
+                            onClick={onSubmit}
+                            type="submit"
                             sx={{
                                 color: 'black',
                                 backgroundColor: 'white',
