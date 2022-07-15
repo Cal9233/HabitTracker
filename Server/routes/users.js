@@ -11,12 +11,15 @@ router.get('user/me', async (req, res) => res.json(req.user));
 //Login User
 router.post('/user/login', async (req, res, next) => { 
     const { email, password } = req.body;
-    const user = await User.findOne({email, password});
+    console.log("email: ", email);
+    console.log("password: ", password);
+    const user = await User.find({email, password});
     try {
+        console.log("user: ", user);
         if(!user){
             res.status(400).json({
                 message: "Login not successful",
-                error: "Username does not exist",
+                error: error.message,
             });
         } else {
             res.status(200).json({

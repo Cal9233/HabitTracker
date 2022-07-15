@@ -1,8 +1,9 @@
-import { Button, FormControl, FormLabel, Grid, TextField } from '@mui/material';
+import { Button, FormControl, FormLabel, Grid, TextField, Card, CardContent, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React, {useState, useContext} from 'react';
 import { AppContext } from '../Context/AppContext';
 import axios from 'axios';
+import image from '../Images/background.jpg';
 
 const SignUp = ({history}) => {
 
@@ -28,7 +29,6 @@ const SignUp = ({history}) => {
             ...userData,
             [name]: value
         })
-
     }
 
     const onSubmit = (e) => {
@@ -68,62 +68,61 @@ const SignUp = ({history}) => {
 
 
   return (
-    <>
-    {/* <div style={{display: 'flex', alignItems: 'center'}}>
+    <div style={{
+        padding: '50px',
+        display: 'flex', 
+        alignItems: 'center',
+        justifyItems: 'center',
+        backgroundImage: `url(${image})`,
+        objectFit: 'cover',
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        //justifyContent: 'center'
+    }}>
         <Container maxWidth='lg'>
-            <form onSubmit={(e) => onSubmit(e)}>
-                <FormControl>
-                    <FormLabel sx={{color: "black", textAlign: "center", fontSize: "40px"}}>User Registration</FormLabel>
-                    <br />
-                    <TextField name="email" label="Email" onChange={handleInputChange} value={userData.email} type="email"/>
-                    <br />
-                    <TextField name="name" label="Username" onChange={handleInputChange} value={userData.name} type="text"/>
-                    <br />
-                    <TextField name="password" label="Password" onChange={handleInputChange} value={userData.password} type="password"/>
-                    <br />
-                    <Button 
-                    sx={{color: "black", 
-                    backgroundColor: "white", 
-                    borderColor: "white"}}
-                    variant="contained"
-                    onClick={onSubmit}
-                    type="submit"
-                    >SignUp</Button>
-                </FormControl>
-            </form>
+            <Card style={{maxWidth: 450, margin: "0 auto", padding: "20px 5px"}}>
+                <CardContent>
+                    
+                        <form onSubmit={(e) => onSubmit(e)}>
+                            <Grid container spacing={3} alignItems="center" justify="center" direction="column">
+                                <FormLabel sx={{color: "black", textAlign: "center", fontSize: "40px", padding: "10px"}}>User Registration</FormLabel>
+                                <Typography gutterBottom variant="h8" align="center">Please enter your information below</Typography>
+                                <Grid item xs={12} sm={6}>
+                                    <FormControl sx={{padding: '10px'}}>
+                                        <TextField name="email" label="Email" onChange={handleInputChange} value={userData.email} type="email" fullWidth required/>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <FormControl sx={{padding: '10px'}}>
+                                        <TextField name="name" label="Username" onChange={handleInputChange} value={userData.name} type="text" fullWidth required/>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <FormControl sx={{padding: '10px'}}>
+                                        <TextField name="password" label="Password" onChange={handleInputChange} value={userData.password} type="password" fullWidth required/>
+                                    </FormControl>
+                                </Grid>
+                                <Grid item> 
+                                    <Button 
+                                        sx={{
+                                            color: "black", 
+                                            backgroundColor: "white", 
+                                            borderColor: "white"
+                                        }}
+                                        variant="contained"
+                                        onClick={onSubmit}
+                                        type="submit"
+                                        fullWidth
+                                        required
+                                    >SignUp</Button>
+                                </Grid>
+                            </Grid>
+                        </form>
+                    </CardContent>
+                </Card>
         </Container>
-    </div> */}
-    <Container maxWidth='lg'>
-        <form onSubmit={(e) => onSubmit(e)}>
-            <Grid container alignItems="center" justify="center" direction="column">
-                <FormLabel sx={{color: "black", textAlign: "center", fontSize: "40px"}}>User Registration</FormLabel>
-                <Grid item>
-                    <FormControl>
-                        <TextField name="email" label="Email" onChange={handleInputChange} value={userData.email} type="email" />
-                    </FormControl>
-                </Grid>
-                <Grid item>
-                    <FormControl>
-                        <TextField name="name" label="Username" onChange={handleInputChange} value={userData.name} type="text"/>
-                    </FormControl>
-                </Grid>
-                <Grid item>
-                    <FormControl>
-                    <TextField name="password" label="Password" onChange={handleInputChange} value={userData.password} type="password"/>
-                    </FormControl>
-                </Grid>
-                <Button 
-                    sx={{color: "black", 
-                    backgroundColor: "white", 
-                    borderColor: "white"}}
-                    variant="contained"
-                    onClick={onSubmit}
-                    type="submit"
-                    >SignUp</Button>
-            </Grid>
-        </form>
-    </Container>
-    </>
+    </div>
   )
 }
 
