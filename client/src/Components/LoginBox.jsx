@@ -5,9 +5,9 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import { AppContext } from '../Context/AppContext';
 import { FormLabel, TextField } from '@mui/material';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
-const LoginBox = ({history}) => {
+const LoginBox = () => {
     const user = {
         name: "",
         email: "",
@@ -17,6 +17,8 @@ const LoginBox = ({history}) => {
     const [userData, setUserData] = useState(user);
     const { setCurrentUser } = useContext(AppContext);
     const api = 'http://localhost:1337';
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -38,7 +40,7 @@ const LoginBox = ({history}) => {
             localStorage.setItem('user', data);
             setCurrentUser(data);
             if(data){
-                history.push('/Home');
+                navigate('/Home');
             }
         })
         .catch(e => console.log(e));

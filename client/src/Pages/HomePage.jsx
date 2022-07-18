@@ -1,5 +1,6 @@
 import React from 'react';
-import ProgressChart from './ProgressChart';
+import ProgressChart from '../Components/ProgressChart';
+import HabitContainer from '../Components/HabitContainer';
 
 
 //We want chart that shows progress
@@ -11,6 +12,7 @@ const HomePage = () => {
   return (
     <div>
       <ProgressChart />
+      <HabitContainer />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import image from '../Images/background.jpg';
-import LoginBox from './LoginBox';
+import LoginBox from '../Components/LoginBox';
 
 
 const LandingPage = () => {
