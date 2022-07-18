@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
+//needs logic and functionality implemented
+
 const AppHeader = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>

@@ -4,6 +4,7 @@ import React, {useState, useContext} from 'react';
 import { AppContext } from '../Context/AppContext';
 import axios from 'axios';
 import image from '../Images/background.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = ({history}) => {
 
@@ -17,6 +18,7 @@ const SignUp = ({history}) => {
     const [userData, setUserData] = useState(user);
     const { setCurrentUser } = useContext(AppContext);
     const api = 'http://localhost:1337';
+    const navigate = useNavigate();
 
     //checks if succeedd or failed
     const [error, setError] = useState(false);
@@ -39,7 +41,7 @@ const SignUp = ({history}) => {
         .then((data) => {
             localStorage.setItem('user', data);
             setCurrentUser(data);
-            history.push('/Home');
+            navigate('/Home');
         })
         .catch(e => console.log(e));
     }
