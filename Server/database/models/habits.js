@@ -3,17 +3,29 @@ const Schema = mongoose.Schema;
 
 const HabitSchema = new Schema(
     {
+        ownerId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
         action: {
             type: String
         },
         start: {
-            type: String
+            type: Date
         },
         deadline: {
-            type: String
+            type: Date
+        },
+        completed: {
+            type: Boolean,
+            default: false,
         }
     }
 );
+
+// HabitSchema.methods.toJson = function(){
+
+// }
 
 const Habits = mongoose.model('habits', HabitSchema);
 
