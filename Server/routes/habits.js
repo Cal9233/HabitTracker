@@ -14,8 +14,7 @@ router.post('/habits', async (req, res, next) => {
     if(req.body){
         await Habits.create({
             action: req.body.action,
-            start: req.body.start,
-            deadline: req.body.deadline
+            completed: req.body.action
         })
         .then(data => res.json(data))
         .catch(next);
