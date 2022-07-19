@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import HabitButton from './HabitButton';
+import HabitModal from './HabitModal';
 
 
 //Table will contain columns
@@ -74,6 +75,7 @@ const HabitContainer = () => {
                 <Button variant="outlined" color="success" onClick={addData}>
                   +
                 </Button>
+                {/* <HabitModal addData={addData}/> */}
               </TableCell>
             </TableHead>
             <TableBody>

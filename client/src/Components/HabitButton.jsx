@@ -2,9 +2,10 @@ import { Button, Checkbox, FormLabel, Grid, Table } from '@mui/material';
 import React, {useState} from 'react';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+import { TextField } from '@mui/material';
 
 const HabitButton = ({data, deleteData, handleChange}) => {
-    const [isChecked, setIsChecked] = useState(false);
+    //const [isChecked, setIsChecked] = useState(false);
 
     
     // const toggle = () => {
@@ -17,23 +18,52 @@ const HabitButton = ({data, deleteData, handleChange}) => {
             const {id, action, completed} = a;
             return (
                 <TableRow key={i} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                    <TableCell component="td" scope="col">
-                        <input 
+                    {/* <TableCell component="td" scope="col">
+                        <TextField 
                             type="text" 
                             value={action} 
                             onChange={(e) => (handleChange(i, e))}
                             name="action"
                             className="form-control" /> 
                     </TableCell>
-                    <TableCell component="td" scope="row">
-                        <input 
+                    <TableCell component="td" scope="col">
+                        <TextField 
                             type="text" 
                             value={completed} 
                             onChange={(e) => (handleChange(i, e))}
                             name="completed"
                             className="form-control" /> 
+                    </TableCell> */}
+                    <TableCell component="td" scope="col">
+                        <TextField 
+                            type="text" 
+                            value={action} 
+                            onChange={(e) => (handleChange(i, e))}
+                            name="action"
+                            className="form-control" /> 
                     </TableCell>
-                    <TableCell component="td" scope="row">
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
+                        <Checkbox color="success"/>
+                    </TableCell>
+                    <TableCell component="td" scope="col">
                         <Button 
                             variant="outlined" 
                             color="error" 

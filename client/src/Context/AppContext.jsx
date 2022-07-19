@@ -6,6 +6,7 @@ const AppContext = createContext();
 
 const AppContextProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [habits, setHabits] = useState([]);
     const user = AuthService.getCurrentUser();
     const api_url = 'http://localhost:1337';
 
@@ -27,7 +28,9 @@ const AppContextProvider = ({children}) => {
     <AppContext.Provider
         value={{
             currentUser,
-            setCurrentUser
+            setCurrentUser,
+            habits,
+            setHabits
         }}
     >
         {children}
