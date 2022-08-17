@@ -4,10 +4,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
+import axios from 'axios';
+import testData from '../services/testData.json';
 
 //Will be passing name props to habit button
+//Have to use AppContext to pass name
 
-const HabitModal = ({addData}) => {
+const HabitModal = ({...addData}) => {
 
     const style = {
         position: 'absolute',
@@ -22,22 +25,38 @@ const HabitModal = ({addData}) => {
     }
 
     const newHabit = {
-        title: ''
+        id: 0,
+        action: "",
+        completed: false
     }
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const api = 'http://localhost:1337';
     const [title, setTitle] = useState(newHabit);
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        const {name, defaultValue} = e.target;
         e.preventDefault();
         setTitle({
             ...title,
-            [name]: value
+            [name]: defaultValue
         });
     }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post(api + '/habits', title)
+        .then((data) => {
+            console.log("data: ", data);
+            setTitle({...data});
+        })
+        .catch((e) => console.log("error: ", e));
+        handleClose(true);
+    }
+
 
   return (
     <div>
@@ -54,13 +73,13 @@ const HabitModal = ({addData}) => {
                 </Typography>
                 <TextField 
                     type="text" 
-                    defaultValue={newHabit.title} 
+                    defaultValue={newHabit.action} 
                     onChange={handleChange}
                     name="title"/>
                 <Button 
                     variant="outlined" 
                     color="success" 
-                    onClick={() => (addData)}>
+                    onClick={onSubmit}>
                         Create
                 </Button>
             </Box>

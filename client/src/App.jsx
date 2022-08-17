@@ -1,9 +1,8 @@
-import react, { useContext } from 'react';
 import HomePage from './Pages/HomePage';
 import LandingPage from './Pages/LandingPage';
+import Account from './Pages/Account';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { AppContextProvider } from './Context/AppContext';
-import AppHeader from './Components/AppHeader';
 import WithNav from './Components/WithNav';
 import WithOutNav from './Components/WithOutNav';
 import './App.css';
@@ -21,6 +20,7 @@ function App() {
             </Route >
             <Route element={<WithNav />}>
               <Route path="/Home" element={<HomePage />} />
+              <Route path="/Account" element={<Account />} />
             </Route>  
           </Routes>
       </BrowserRouter>
