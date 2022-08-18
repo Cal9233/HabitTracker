@@ -11,7 +11,8 @@ const SignUp = ({history}) => {
     const user = {
         name: "",
         email: "",
-        password: ""
+        password: "",
+        user_type_id: Math.random()
     }
 
     //Fields

@@ -1,15 +1,15 @@
 require('./database/config');
-const express = require('express');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const app = express();
-const port = process.env.PORT || 1337;
-const habits = require("./routes/habits.js");
-const cors = require('cors');
-const users = require("./routes/users");
-const path = require("path");
-const bodyParser = require("body-parser");
-var cookieParser = require('cookie-parser');
-//const mongoose = require("mongoose");
+const express = require('express'),
+    { MongoClient, ServerApiVersion } = require('mongodb'),
+    app = express(),
+    port = process.env.PORT || 1337,
+    habits = require("./routes/habits.js"),
+    cors = require('cors'),
+    users = require("./routes/users"),
+    path = require("path"),
+    bodyParser = require("body-parser"),
+    //passport = require('./middleware/index'),
+    cookieParser = require('cookie-parser');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,15 +34,18 @@ app.use(function (req, res, next) {
     next();
 });
 
+// app.use(
+//     passport.authenticate("jwt", {
+//         session: false,
+//     })
+// );
+
 app.use(habits);
 app.use(users);
 // // view engine setup
 // app.engine('pug', require('pug').__express)
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'pug');
-
-//app.use('/', routes);
-//app.use('/api/habits', habits);
 
 
 // catch 404 and forward to error handler

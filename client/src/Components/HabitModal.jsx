@@ -10,7 +10,7 @@ import testData from '../services/testData.json';
 //Will be passing name props to habit button
 //Have to use AppContext to pass name
 
-const HabitModal = ({...addData}) => {
+const HabitModal = () => {
 
     const style = {
         position: 'absolute',

@@ -8,6 +8,10 @@ const Habits = require("./habits");
 
 const userSchema = new Schema(
     {
+        user_type_id: {
+            type: Number,
+            required: true,
+        },
         name: {
             type: String,
             required: true,
@@ -28,7 +32,7 @@ const userSchema = new Schema(
         password: {
             type: String,
             required: true,
-            trime: true,
+            trim: true,
             validate(value){
                 if(value.toLowerCase().includes("password")){
                     throw new Error("can't be password");
@@ -52,6 +56,15 @@ const userSchema = new Schema(
     }
 );
 
+// By naming this method toJSON we don't need to call it for it to run because of our express res.send methods calls it for us.
+userSchema.methods.toJSON = function () {
+    const user = this;
+    const userObject = user.toObject();
+    delete userObject.password;
+    delete userObject.tokens;
+    return userObject;
+  };
+
 userSchema.virtual('habits', {
     ref: 'Habits',
     localField: '_id',
@@ -66,7 +79,7 @@ userSchema.pre("save", async function(next){
     next();
 })
 
-userSchema.methods.generateToken = () => {
+userSchema.methods.generateToken = async () => {
     const user = this;
     const { secret } = config;
     const token = jwt.sign(
