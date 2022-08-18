@@ -95,25 +95,25 @@ const HabitContainer = () => {
                       {habits.action}
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.monday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.tuesday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.wednesday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.thursday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.friday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.saturday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
-                        <Checkbox color="success"/>
+                        <Checkbox checked={habits.sunday}/>
                     </TableCell>
                     <TableCell component="td" scope="col">
                         <Button 
